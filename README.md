@@ -13,5 +13,5 @@ streamlit run Bike_Rental.py
 ```
 
 ## Link Streamlit Cloud
-https://bikerental24.streamlit.app/
+https://bikerental2024.streamlit.app/
 ```
