@@ -87,7 +87,7 @@ tab1, tab2, tab3 = st.tabs(["Total User", "User by Nature Factors", "User by Mon
 
 with tab1:
     st.header("Daily Users")
-    cola, colb, colc = st.columns(3)
+    cola, colb = st.columns(2)
     
     with cola:
         total_casual = bike_df.casual.sum()
@@ -97,10 +97,6 @@ with tab1:
         total_registered = bike_df.registered.sum()
         st.metric("Total Registered Users", value=f'{total_registered:,}')
         
-    with colc:
-        total_users = bike_df.cnt.sum()
-        st.metric("Total Users", value=f'{total_users:,}')
-
     cold, cole = st.columns(2)
     
     # Plot for casual users
@@ -130,6 +126,9 @@ with tab1:
 
     with cole:
         st.pyplot(fig2)
+
+    total_users = bike_df.cnt.sum()
+        st.metric("Total Users", value=f'{total_users:,}')
     
     # Plot for total users
     fig3, ax3 = plt.subplots(figsize=(6, 4))
