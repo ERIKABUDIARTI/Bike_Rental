@@ -100,18 +100,49 @@ with tab1:
     with colc:
         total_users = bike_df.cnt.sum()
         st.metric("Total User", value=f'{total_users:,}')
+
+    cold, cole, colf = st.columns(3)
     
-    fig, ax = plt.subplots(figsize=(6, 4))
-    sns.lineplot(data=bike_df, x='dteday', y='cnt', ax=ax, color='#9b5de5')
-    ax.set_title('Total Users', fontsize=8)
+    fig1, ax = plt.subplots(figsize=(6, 4))
+    sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax, color='#9b5de5')
+    ax.set_title('Casual User', fontsize=8)
     ax.set_xlabel('Date', fontsize=6)
     ax.set_ylabel('User Count', fontsize=6)
     ax.tick_params(axis='x', labelsize=4)  
     ax.tick_params(axis='y', labelsize=4) 
     ax.grid(True)
     plt.tight_layout()
-    st.pyplot(fig)
 
+    fig2, ax = plt.subplots(figsize=(6, 4))
+    sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax, color='#9b5de5')
+    ax.set_title('Registered User', fontsize=8)
+    ax.set_xlabel('Date', fontsize=6)
+    ax.set_ylabel('User Count', fontsize=6)
+    ax.tick_params(axis='x', labelsize=4)  
+    ax.tick_params(axis='y', labelsize=4) 
+    ax.grid(True)
+    plt.tight_layout()
+
+    fig3, ax = plt.subplots(figsize=(6, 4))
+    sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax, color='#9b5de5')
+    ax.set_title('Casual User', fontsize=8)
+    ax.set_xlabel('Date', fontsize=6)
+    ax.set_ylabel('User Count', fontsize=6)
+    ax.tick_params(axis='x', labelsize=4)  
+    ax.tick_params(axis='y', labelsize=4) 
+    ax.grid(True)
+    plt.tight_layout()
+    st.pyplot(fig3)
+
+    with cold:
+        st.pyplot(fig1)
+
+    with cole:
+        st.pyplot(fig2)
+
+    with colf:
+        st.pyplot(fig3)
+        
 
 with tab2:
     st.header("Nature Factor Influences on Total Rent")
