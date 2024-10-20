@@ -148,6 +148,7 @@ with tab2:
             3: 'Fall',
             4: 'Winter'
         })
+        bike_df['season'] = pd.Categorical(bike_df['season'], categories=['Spring', 'Summer', 'Fall', 'Winter'], ordered=True)
         season_df = bike_df.groupby('season').agg({'cnt': 'sum'}).reset_index()
 
         fig2 = px.bar(season_df, 
