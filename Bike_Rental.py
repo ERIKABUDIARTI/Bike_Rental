@@ -148,14 +148,14 @@ with tab2:
             3: 'Fall',
             4: 'Winter'
         })
-        sorted_season_df = bike_df.groupby('season').agg({'cnt': 'sum'}).reset_index().sort_values(by='cnt', ascending=True)
+        sorted_season_df = bike_df.groupby('season').agg({'cnt': 'sum'})
 
         fig2 = px.bar(sorted_season_df, 
                     x='season', 
                     y='cnt', 
                     color='season', 
                     title='Total Rent of Different Season',
-                    color_discrete_sequence= ['#efc3e6', '#efc3e6', '#efc3e6', '#f15bb5'])
+                    color_discrete_sequence= ['#efc3e6', '#efc3e6', '#f15bb5', '#efc3e6'])
 
         fig2.update_xaxes(title_text='Season')
         fig2.update_yaxes(title_text='Total Rent', range=[0, 1100000], dtick=100000, autorange=False)
