@@ -99,35 +99,18 @@ with tab1:
         st.markdown(f"<h2 style='text-align: center;'>Total Registered Users</h2>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center;'>{total_registered:,}</h3>", unsafe_allow_html=True)
         
-    colc, cold = st.columns(2)
-    
-    # Plot for casual users
-    fig1, ax1 = plt.subplots(figsize=(6, 4))
-    sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax1, color='#9B5DE5')
-    ax1.set_title('Casual Users', fontsize=8)
-    ax1.set_xlabel('Date', fontsize=6)
-    ax1.set_ylabel('User Count', fontsize=6)
-    ax1.tick_params(axis='x', labelsize=4)  
-    ax1.tick_params(axis='y', labelsize=4) 
-    ax1.grid(True)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax, color='#9B5DE5', label='Casual Users')
+    sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax, color='#EB8317', label='Registered Users')
+    ax.set_title('Casual vs Registered Users', fontsize=12)
+    ax.set_xlabel('Date', fontsize=10)
+    ax.set_ylabel('User Count', fontsize=10)
+    ax.tick_params(axis='x', labelsize=8)
+    ax.tick_params(axis='y', labelsize=8)
+    ax.grid(True)
+    ax.legend()
     plt.tight_layout()
-    
-    # Plot for registered users
-    fig2, ax2 = plt.subplots(figsize=(6, 4))
-    sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax2, color='#EB8317')
-    ax2.set_title('Registered Users', fontsize=8)
-    ax2.set_xlabel('Date', fontsize=6)
-    ax2.set_ylabel('User Count', fontsize=6)
-    ax2.tick_params(axis='x', labelsize=4)  
-    ax2.tick_params(axis='y', labelsize=4) 
-    ax2.grid(True)
-    plt.tight_layout()
-
-    with colc: 
-        st.pyplot(fig1)
-
-    with cold:
-        st.pyplot(fig2)
+    st.pyplot(fig)
 
 with tab2:
     st.header("Nature Factor Influences on Total Rent")
