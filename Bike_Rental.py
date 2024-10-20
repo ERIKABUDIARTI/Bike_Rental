@@ -99,7 +99,7 @@ with tab1:
         st.markdown(f"<h2 style='text-align: center;'>Total Registered Users</h2>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center;'>{total_registered:,}</h3>", unsafe_allow_html=True)
         
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(10, 5))
     sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax, color='#9B5DE5', label='Casual Users')
     sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax, color='#EB8317', label='Registered Users')
     ax.set_title('Casual vs Registered Users', fontsize=12)
@@ -110,7 +110,7 @@ with tab1:
     ax.grid(True)
     ax.legend()
     plt.tight_layout()
-    st.pyplot(fig)
+    st.pyplot(fig, use_container_width=True, use_container_heigth=True)
 
 with tab2:
     st.header("Nature Factor Influences on Total Rent")
