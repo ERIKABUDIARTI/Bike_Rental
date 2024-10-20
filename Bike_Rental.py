@@ -87,7 +87,7 @@ tab1, tab2, tab3 = st.tabs(["Total User", "User by Nature Factors", "User by Mon
 
 with tab1:
     st.header("Daily Users")
-    cola, colb = st.columns(2)
+    cola, colb, colc = st.columns(3)
     
     with cola:
         total_casual = bike_df.casual.sum()
@@ -98,8 +98,12 @@ with tab1:
         total_registered = bike_df.registered.sum()
         st.markdown(f"<h2 style='text-align: center;'>Total Registered Users</h2>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center;'>{total_registered:,}</h3>", unsafe_allow_html=True)
+
+    with colc:
+        total_users = bike_df.cnt.sum()
+        st.markdown(f"<h2 style='text-align: center;'>Total Users</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center;'>{total_users:,}</h3>", unsafe_allow_html=True)
         
-    cold, cole = st.columns(2)
     
     # Plot for casual users
     fig1, ax1 = plt.subplots(figsize=(6, 4))
@@ -110,6 +114,7 @@ with tab1:
     ax1.tick_params(axis='y', labelsize=4) 
     ax1.grid(True)
     plt.tight_layout()
+    st.pyplot(fig1)
     
     # Plot for registered users
     fig2, ax2 = plt.subplots(figsize=(6, 4))
@@ -120,28 +125,8 @@ with tab1:
     ax2.tick_params(axis='y', labelsize=4) 
     ax2.grid(True)
     plt.tight_layout()
-
-    with cold:
-        st.pyplot(fig1)
-
-    with cole:
-        st.pyplot(fig2)
-
-    total_users = bike_df.cnt.sum()
-    st.markdown(f"<h2 style='text-align: center;'>Total Users</h2>", unsafe_allow_html=True)
-    st.markdown(f"<h3 style='text-align: center;'>{total_users:,}</h3>", unsafe_allow_html=True)
-    
-    # Plot for total users
-    fig3, ax3 = plt.subplots(figsize=(6, 4))
-    sns.lineplot(data=bike_df, x='dteday', y='cnt', ax=ax3, color='#81DAE3')
-    ax3.set_xlabel('Date', fontsize=6)
-    ax3.set_ylabel('User Count', fontsize=6)
-    ax3.tick_params(axis='x', labelsize=4)  
-    ax3.tick_params(axis='y', labelsize=4) 
-    ax3.grid(True)
-    plt.tight_layout()
-    st.pyplot(fig3)
-    
+    st.pyplot(fig2)
+        
 
 with tab2:
     st.header("Nature Factor Influences on Total Rent")
