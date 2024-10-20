@@ -132,7 +132,7 @@ with tab1:
     
     # Plot for total users
     fig3, ax3 = plt.subplots(figsize=(6, 4))
-    sns.lineplot(data=bike_df, x='dteday', y='cnt', ax=ax3, color='#A66E38')
+    sns.lineplot(data=bike_df, x='dteday', y='cnt', ax=ax3, color='#562B08')
     ax3.set_title('Total Users', fontsize=8)
     ax3.set_xlabel('Date', fontsize=6)
     ax3.set_ylabel('User Count', fontsize=6)
