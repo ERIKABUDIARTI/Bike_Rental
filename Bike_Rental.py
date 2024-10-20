@@ -104,7 +104,6 @@ with tab1:
     # Plot for casual users
     fig1, ax1 = plt.subplots(figsize=(6, 4))
     sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax1, color='#9B5DE5')
-    ax1.set_title('Casual Users', fontsize=8)
     ax1.set_xlabel('Date', fontsize=6)
     ax1.set_ylabel('User Count', fontsize=6)
     ax1.tick_params(axis='x', labelsize=4)  
@@ -115,7 +114,6 @@ with tab1:
     # Plot for registered users
     fig2, ax2 = plt.subplots(figsize=(6, 4))
     sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax2, color='#EB8317')
-    ax2.set_title('Registered Users', fontsize=8)
     ax2.set_xlabel('Date', fontsize=6)
     ax2.set_ylabel('User Count', fontsize=6)
     ax2.tick_params(axis='x', labelsize=4)  
@@ -136,7 +134,6 @@ with tab1:
     # Plot for total users
     fig3, ax3 = plt.subplots(figsize=(6, 4))
     sns.lineplot(data=bike_df, x='dteday', y='cnt', ax=ax3, color='#562B08')
-    ax3.set_title('Total Users', fontsize=8)
     ax3.set_xlabel('Date', fontsize=6)
     ax3.set_ylabel('User Count', fontsize=6)
     ax3.tick_params(axis='x', labelsize=4)  
