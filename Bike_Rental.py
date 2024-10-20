@@ -83,7 +83,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab1, tab2, tab3, tab4 = st.tabs(["Total User", "User by Nature Factors", "User by Month and Hour", "RFM Analysis"])
+tab1, tab2, tab3 = st.tabs(["Total User", "User by Nature Factors", "User by Month and Hour"])
 
 with tab1:
     st.header("Daily Users")
@@ -162,7 +162,7 @@ with tab2:
         fig2.update_yaxes(title_text='Total Rent', range=[0, 1100000], dtick=100000, autorange=False)
         fig2.update_xaxes(title_font=dict(size=15), tickfont=dict(size=12))
         fig2.update_yaxes(title_font=dict(size=15), tickfont=dict(size=12))
-        fig2.update_layout(title='Total Rent of Different Weather', title_font=dict(size=30))
+        fig2.update_layout(title='Total Rent of Different Season', title_font=dict(size=30))
         fig2.update_layout(width=600, height=800)
         fig2.update_layout(showlegend=False)
         return fig2
