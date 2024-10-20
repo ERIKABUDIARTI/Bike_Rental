@@ -125,7 +125,7 @@ with tab1:
 
     fig3, ax = plt.subplots(figsize=(6, 4))
     sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax, color='#9b5de5')
-    ax.set_title('Casual User', fontsize=8)
+    ax.set_title('Total User', fontsize=8)
     ax.set_xlabel('Date', fontsize=6)
     ax.set_ylabel('User Count', fontsize=6)
     ax.tick_params(axis='x', labelsize=4)  
