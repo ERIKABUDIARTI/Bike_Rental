@@ -87,7 +87,7 @@ tab1, tab2, tab3 = st.tabs(["Total User", "User by Nature Factors", "User by Mon
 
 with tab1:
     st.header("Daily Users")
-    cola, colb, colc = st.columns(3)
+    cola, colb = st.columns(2)
     
     with cola:
         total_casual = bike_df.casual.sum()
@@ -99,15 +99,15 @@ with tab1:
         st.markdown(f"<h2 style='text-align: center;'>Total Registered Users</h2>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center;'>{total_registered:,}</h3>", unsafe_allow_html=True)
 
-    with colc:
-        total_users = bike_df.cnt.sum()
-        st.markdown(f"<h2 style='text-align: center;'>Total Users</h2>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='text-align: center;'>{total_users:,}</h3>", unsafe_allow_html=True)
+    total_users = bike_df.cnt.sum()
+    st.markdown(f"<h2 style='text-align: center;'>Total Users</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center;'>{total_users:,}</h3>", unsafe_allow_html=True)
         
     
     # Plot for casual users
     fig1, ax1 = plt.subplots(figsize=(6, 4))
     sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax1, color='#9B5DE5')
+    ax1.set_title('Casual Users', fontsize=8)
     ax1.set_xlabel('Date', fontsize=6)
     ax1.set_ylabel('User Count', fontsize=6)
     ax1.tick_params(axis='x', labelsize=4)  
@@ -119,6 +119,7 @@ with tab1:
     # Plot for registered users
     fig2, ax2 = plt.subplots(figsize=(6, 4))
     sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax2, color='#EB8317')
+    ax2.set_title('Registered Users', fontsize=8)
     ax2.set_xlabel('Date', fontsize=6)
     ax2.set_ylabel('User Count', fontsize=6)
     ax2.tick_params(axis='x', labelsize=4)  
