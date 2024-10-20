@@ -128,7 +128,7 @@ with tab1:
         st.pyplot(fig2)
 
     total_users = bike_df.cnt.sum()
-        st.metric("Total Users", value=f'{total_users:,}')
+    st.metric("Total Users", value=f'{total_users:,}')
     
     # Plot for total users
     fig3, ax3 = plt.subplots(figsize=(6, 4))
