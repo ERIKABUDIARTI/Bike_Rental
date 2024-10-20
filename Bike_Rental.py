@@ -103,6 +103,7 @@ with tab1:
 
     cold, cole, colf = st.columns(3)
     
+    # Plot for casual users
     fig1, ax1 = plt.subplots(figsize=(6, 4))
     sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax1, color='#9b5de5')
     ax1.set_title('Casual Users', fontsize=8)
@@ -112,9 +113,10 @@ with tab1:
     ax1.tick_params(axis='y', labelsize=4) 
     ax1.grid(True)
     plt.tight_layout()
-
+    
+    # Plot for registered users
     fig2, ax2 = plt.subplots(figsize=(6, 4))
-    sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax2, color='#9b5de5')
+    sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax2, color='#f15bb5')
     ax2.set_title('Registered Users', fontsize=8)
     ax2.set_xlabel('Date', fontsize=6)
     ax2.set_ylabel('User Count', fontsize=6)
@@ -122,9 +124,10 @@ with tab1:
     ax2.tick_params(axis='y', labelsize=4) 
     ax2.grid(True)
     plt.tight_layout()
-
+    
+    # Plot for total users
     fig3, ax3 = plt.subplots(figsize=(6, 4))
-    sns.lineplot(data=bike_df, x='dteday', y='cnt', ax=ax3, color='#9b5de5')
+    sns.lineplot(data=bike_df, x='dteday', y='cnt', ax=ax3, color='#00bbf9')
     ax3.set_title('Total Users', fontsize=8)
     ax3.set_xlabel('Date', fontsize=6)
     ax3.set_ylabel('User Count', fontsize=6)
@@ -132,7 +135,6 @@ with tab1:
     ax3.tick_params(axis='y', labelsize=4) 
     ax3.grid(True)
     plt.tight_layout()
-    st.pyplot(fig3)
 
     with cold:
         st.pyplot(fig1)
