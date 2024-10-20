@@ -110,7 +110,7 @@ with tab1:
     ax.grid(True)
     ax.legend()
     plt.tight_layout()
-    st.pyplot(fig, use_container_width=True, use_container_heigth=True)
+    st.pyplot(fig)
 
 with tab2:
     st.header("Nature Factor Influences on Total Rent")
