@@ -2,7 +2,7 @@
 
 ## Setup environment
 ```
-conda create --name Bike_Rental python=3.11.5
+conda create --name Bike_Rental python=3.13.0
 conda activate Bike_Rental
 pip install numpy pandas matplotlib seaborn plotly vscode streamlit
 ```
