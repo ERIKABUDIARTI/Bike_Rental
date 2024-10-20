@@ -99,7 +99,7 @@ with tab1:
         st.markdown(f"<h2 style='text-align: center;'>Total Registered Users</h2>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center;'>{total_registered:,}</h3>", unsafe_allow_html=True)
         
-    fig, ax = plt.subplots(figsize=(10, 5))
+    fig, ax = plt.subplots(figsize=(10, 6))
     sns.lineplot(data=bike_df, x='dteday', y='casual', ax=ax, color='#9B5DE5', label='Casual Users')
     sns.lineplot(data=bike_df, x='dteday', y='registered', ax=ax, color='#EB8317', label='Registered Users')
     ax.set_title('Casual vs Registered Users', fontsize=12)
