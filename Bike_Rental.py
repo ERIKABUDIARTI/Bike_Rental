@@ -91,11 +91,13 @@ with tab1:
     
     with cola:
         total_casual = bike_df.casual.sum()
-        st.metric("Total Casual Users", value=f'{total_casual:,}')
+        st.markdown(f"<h2 style='text-align: center;'>Total Casual Users</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center;'>{total_casual:,}</h3>", unsafe_allow_html=True)
     
     with colb:
         total_registered = bike_df.registered.sum()
-        st.metric("Total Registered Users", value=f'{total_registered:,}')
+        st.markdown(f"<h2 style='text-align: center;'>Total Registered Users</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center;'>{total_registered:,}</h3>", unsafe_allow_html=True)
         
     cold, cole = st.columns(2)
     
@@ -128,7 +130,8 @@ with tab1:
         st.pyplot(fig2)
 
     total_users = bike_df.cnt.sum()
-    st.metric("Total Users", value=f'{total_users:,}')
+    st.markdown(f"<h2 style='text-align: center;'>Total Users</h2>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='text-align: center;'>{total_users:,}</h3>", unsafe_allow_html=True)
     
     # Plot for total users
     fig3, ax3 = plt.subplots(figsize=(6, 4))
