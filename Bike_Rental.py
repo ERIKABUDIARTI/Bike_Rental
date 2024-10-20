@@ -148,9 +148,9 @@ with tab2:
             3: 'Fall',
             4: 'Winter'
         })
-        sorted_season_df = bike_df.groupby('season').agg({'cnt': 'sum'})
+        season_df = bike_df.groupby('season').agg({'cnt': 'sum'})
 
-        fig2 = px.bar(sorted_season_df, 
+        fig2 = px.bar(season_df, 
                     x='season', 
                     y='cnt', 
                     color='season', 
