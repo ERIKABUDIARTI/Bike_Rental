@@ -83,7 +83,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-tab1, tab2, tab3 = st.tabs(["Total User", "User by Nature Factors", "User by Month and Hour"])
+tab1, tab2, tab3 = st.tabs(["Casual & Registered User", "User by Nature Factors", "User by Month and Hour"])
 
 with tab1:
     st.header("Daily Users")
@@ -98,11 +98,8 @@ with tab1:
         total_registered = bike_df.registered.sum()
         st.markdown(f"<h2 style='text-align: center;'>Total Registered Users</h2>", unsafe_allow_html=True)
         st.markdown(f"<h3 style='text-align: center;'>{total_registered:,}</h3>", unsafe_allow_html=True)
-
-    total_users = bike_df.cnt.sum()
-    st.markdown(f"<h2 style='text-align: center;'>Total Users</h2>", unsafe_allow_html=True)
-    st.markdown(f"<h3 style='text-align: center;'>{total_users:,}</h3>", unsafe_allow_html=True)
         
+    colc, cold = st.columns(2)
     
     # Plot for casual users
     fig1, ax1 = plt.subplots(figsize=(6, 4))
@@ -114,7 +111,6 @@ with tab1:
     ax1.tick_params(axis='y', labelsize=4) 
     ax1.grid(True)
     plt.tight_layout()
-    st.pyplot(fig1)
     
     # Plot for registered users
     fig2, ax2 = plt.subplots(figsize=(6, 4))
@@ -127,7 +123,12 @@ with tab1:
     ax2.grid(True)
     plt.tight_layout()
     st.pyplot(fig2)
-        
+
+    with colc: 
+        st.pyplot(fig1)
+
+    with cold:
+        st.pyplot(fig2)
 
 with tab2:
     st.header("Nature Factor Influences on Total Rent")
