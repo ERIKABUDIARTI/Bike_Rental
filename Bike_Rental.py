@@ -227,93 +227,11 @@ def main():
     weather_rent(bike_df)
     season_rent(bike_df)
 
-with tab4:
-    st.header("RFM Analysis")
-    cola, colb, colc = st.columns(3)
-
-    def rfm_analysis(bike_df):
-        hour_df['dteday'] = pd.to_datetime(hour_df['dteday'])
-        bike_df['dteday'] = pd.to_datetime(bike_df['dteday'])
-    
-        bike_df.groupby(by="hr").agg({
-        "cnt": ["sum"]
-        })
-        current_date = max(hour_df['dteday'])
-        
-        rfm_df = bike_df.groupby('registered').agg({
-            'dteday': lambda x: (current_date - x.max()).days,
-            'instant': 'count',
-            'cnt': 'sum'
-        }).reset_index()
-    
-        rfm_df.columns = ['registered', 'Recency', 'Frequency', 'Monetary']
-        return rfm_df
-
-
     if __name__ == "__main__":
         main()
         day_df = read_data('day.csv')
         hour_df = read_data('hour.csv')
         bike_df = read_data('bike_data.csv')
-        rfm_df = rfm_analysis(bike_df)
-
-
-    with cola:
-        min_recency = round(rfm_df.Recency.min(),0)
-        avg_recency = round(rfm_df.Recency.mean(),0)
-        max_recency = round(rfm_df.Recency.max(),0)
-        st.metric("Minimal Recency", value=min_recency)
-        st.metric("Average Recency", value=avg_recency)
-        st.metric("Maximal Recency", value=max_recency)
-
-    with colb:
-        min_frequency = round(rfm_df.Frequency.min(),0)
-        avg_frequency = round(rfm_df.Frequency.mean(),0)
-        max_frequency = round(rfm_df.Frequency.max(),0)
-        st.metric("Minimal Frequency", value=min_frequency)
-        st.metric("Average Frequency", value=avg_frequency)
-        st.metric("Maximal Frequency", value=max_frequency)
-
-    with colc:
-        min_monetary = round(rfm_df.Monetary.min(),0)
-        avg_monetary = round(rfm_df.Monetary.mean(),0)
-        max_monetary = round(rfm_df.Monetary.max(),0)
-        st.metric("Minimal Monetary", value=min_monetary)
-        st.metric("Average Monetary", value=avg_monetary)
-        st.metric("Maximal Monetary", value=max_monetary)
-
-    # Create columns in Streamlit
-    col1, col2, col3 = st.columns(3)
-    
-    # Plot Recency
-    with col1:
-        fig, ax = plt.subplots(figsize=(6, 6))
-        sns.histplot(rfm_df['Recency'], bins=30, kde=True, ax=ax, color='blue')
-        ax.set_title('Recency Distribution')
-        ax.set_xlabel('Recency')
-        ax.set_ylabel('Count')
-        ax.grid(True)
-        st.pyplot(fig)
-    
-    # Plot Frequency
-    with col2:
-        fig, ax = plt.subplots(figsize=(6, 6))
-        sns.histplot(rfm_df['Frequency'], bins=30, kde=True, ax=ax, color='green')
-        ax.set_title('Frequency Distribution')
-        ax.set_xlabel('Frequency')
-        ax.set_ylabel('Count')
-        ax.grid(True)
-        st.pyplot(fig) 
-    
-    # Plot Monetary
-    with col3:
-        fig, ax = plt.subplots(figsize=(6, 6))
-        sns.histplot(rfm_df['Monetary'], bins=30, kde=True, ax=ax, color='red')
-        ax.set_title('Monetary Distribution')
-        ax.set_xlabel('Monetary')
-        ax.set_ylabel('Count')
-        ax.grid(True)
-        st.pyplot(fig)    
 
 st.caption(f"Copyright © 2023-2024 All Rights Reserved [ERIKA BUDIARTI](https://www.linkedin.com/in/erika-budiarti/)")
 st.snow()
