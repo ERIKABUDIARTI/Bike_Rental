@@ -122,7 +122,6 @@ with tab1:
     ax2.tick_params(axis='y', labelsize=4) 
     ax2.grid(True)
     plt.tight_layout()
-    st.pyplot(fig2)
 
     with colc: 
         st.pyplot(fig1)
